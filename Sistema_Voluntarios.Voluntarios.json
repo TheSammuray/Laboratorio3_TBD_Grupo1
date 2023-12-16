@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "657d40e89757c771aa96c434"
+  },
+  "ID_USUARIO": 123,
+  "nombre": "Juan Perez",
+  "latitud": 12.345,
+  "longitud": -67.89,
+  "habilidades": [
+    {
+      "descripcion": "Primeros Auxilios",
+      "codigo": "PA1",
+      "nivel": 4
+    },
+    {
+      "descripcion": "Rescate Acuático",
+      "codigo": "RA2",
+      "nivel": 3
+    }
+  ]
+}]
