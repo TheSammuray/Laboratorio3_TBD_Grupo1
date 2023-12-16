@@ -1,19 +1,16 @@
 package com.TBD.SistemaVoluntarios.Controllers;
 
-import com.TBD.SistemaVoluntarios.Entities.HabilidadEntity;
-import com.TBD.SistemaVoluntarios.Entities.UsuarioEntity;
 import com.TBD.SistemaVoluntarios.Entities.VoluntarioEntity;
 import com.TBD.SistemaVoluntarios.Repositories.VoluntarioRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/voluntario")
 public class VoluntarioController {
+
     private final VoluntarioRepository voluntarioRepository;
 
     public VoluntarioController(VoluntarioRepository voluntarioRepository) {
@@ -22,16 +19,14 @@ public class VoluntarioController {
 
     // CREATE: agregar un voluntario....
     @PostMapping("/nuevo-voluntario")
-    public ResponseEntity<String> agregarVoluntario(@RequestBody VoluntarioEntity voluntario, @RequestParam Integer id)
-    {
-        voluntarioRepository.agregarVoluntario(voluntario, id);
-        return ResponseEntity.ok("Voluntario agregado con exito");
+    public ResponseEntity<String> agregarVoluntario(@RequestBody VoluntarioEntity voluntario) {
+        voluntarioRepository.save(voluntario);
+        return ResponseEntity.ok("Voluntario agregado con éxito");
     }
 
     // READ: Listar todos los voluntarios...
     @GetMapping("/lista-voluntario")
-    public ResponseEntity<List<VoluntarioEntity>> listar(Model model)
-    {
+    public ResponseEntity<List<VoluntarioEntity>> listar() {
         return ResponseEntity.ok(voluntarioRepository.findAll());
     }
 
@@ -42,20 +37,24 @@ public class VoluntarioController {
 
     // UPDATE: Actualiza la ubicacion de un voluntario...
     @PutMapping("/actualizar-ubicacion/{id}")
-    public ResponseEntity<String> updateUbicacion(@PathVariable Integer id,
+    public ResponseEntity<String> updateUbicacion(@PathVariable String id,
                                                   @RequestParam("nuevaLongitud") float nuevaLongitud,
-                                                  @RequestParam("nuevaLatitud") float nuevaLatitud)
-    {
-        voluntarioRepository.updateUbicacion(id, nuevaLongitud, nuevaLatitud);
-        return ResponseEntity.ok("Ubicacion actualizada con exito");
+                                                  @RequestParam("nuevaLatitud") float nuevaLatitud) {
+        VoluntarioEntity voluntario = voluntarioRepository.findById(id).orElse(null);
+        if (voluntario != null) {
+            voluntario.setLongitud(nuevaLongitud);
+            voluntario.setLatitud(nuevaLatitud);
+            voluntarioRepository.save(voluntario);
+            return ResponseEntity.ok("Ubicación actualizada con éxito");
+        } else {
+            return ResponseEntity.badRequest().body("No se encontró el voluntario con el ID proporcionado.");
+        }
     }
 
     // DELETE: Elimina un voluntario.
     @DeleteMapping("/eliminar-voluntario/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable Integer id)
-    {
+    public ResponseEntity<String> deleteById(@PathVariable String id) {
         voluntarioRepository.deleteById(id);
         return ResponseEntity.ok("Voluntario eliminado exitosamente.");
     }
-
 }

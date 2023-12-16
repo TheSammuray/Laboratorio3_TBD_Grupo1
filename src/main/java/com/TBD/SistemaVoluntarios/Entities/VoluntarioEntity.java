@@ -1,27 +1,55 @@
 package com.TBD.SistemaVoluntarios.Entities;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@Getter
-@Setter
 @Data
 public class VoluntarioEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ID_VOLUNTARIO;
 
-    @Column(name="ID_USUARIO")
-    private Integer ID_USUARIO;
+    private String id; // Cambiado a String para coincidir con el tipo de ID en MongoDB
+    private Integer idUsuario;
     private String nombre;
-
-    //Cuidar formato WGS84, el cual establece
-    //que las coordenadas son angulares.
     private Float latitud;
     private Float longitud;
 
+    // Getters y setters
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Float getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(Float latitud) {
+        this.latitud = latitud;
+    }
+
+    public Float getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Float longitud) {
+        this.longitud = longitud;
+    }
 }
