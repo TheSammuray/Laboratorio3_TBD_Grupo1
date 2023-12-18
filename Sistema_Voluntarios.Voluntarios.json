@@ -1,21 +1,63 @@
 [{
   "_id": {
-    "$oid": "657d40e89757c771aa96c434"
+    "$oid": "658089495979e81fbf9569a7"
   },
-  "ID_USUARIO": 123,
-  "nombre": "Juan Perez",
-  "latitud": 12.345,
-  "longitud": -67.89,
+  "nombre": "Voluntario sin habilidades",
+  "latitud": 4,
+  "longitud": 4,
+  "habilidades": [],
+  "_class": "com.TBD.SistemaVoluntarios.Entities.VoluntarioEntity"
+},
+{
+  "_id": {
+    "$oid": "658089595979e81fbf9569a8"
+  },
+  "nombre": "Voluntario con tres habilidades",
+  "latitud": 3,
+  "longitud": 3,
   "habilidades": [
     {
-      "descripcion": "Primeros Auxilios",
-      "codigo": "PA1",
-      "nivel": 4
+      "codigo": "HH6",
+      "descripcion": "Habilidad 6"
     },
     {
-      "descripcion": "Rescate Acuático",
-      "codigo": "RA2",
-      "nivel": 3
+      "codigo": "HH7",
+      "descripcion": "Habilidad 7"
+    },
+    {
+      "codigo": "HH8",
+      "descripcion": "Habilidad 8"
     }
-  ]
+  ],
+  "_class": "com.TBD.SistemaVoluntarios.Entities.VoluntarioEntity"
+},
+{
+  "_id": {
+    "$oid": "658089695979e81fbf9569a9"
+  },
+  "nombre": "Voluntario con una habilidad",
+  "latitud": 2,
+  "longitud": 2,
+  "habilidades": [
+    {
+      "codigo": "HH5",
+      "descripcion": "Habilidad 5"
+    }
+  ],
+  "_class": "com.TBD.SistemaVoluntarios.Entities.VoluntarioEntity"
+},
+{
+  "_id": {
+    "$oid": "658089765979e81fbf9569aa"
+  },
+  "nombre": "Voluntario con una habilidad",
+  "latitud": 2,
+  "longitud": 2,
+  "habilidades": [
+    {
+      "codigo": "HH6",
+      "descripcion": "Habilidad 6"
+    }
+  ],
+  "_class": "com.TBD.SistemaVoluntarios.Entities.VoluntarioEntity"
 }]
