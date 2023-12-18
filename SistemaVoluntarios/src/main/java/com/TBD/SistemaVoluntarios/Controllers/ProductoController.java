@@ -1,7 +1,7 @@
-package com.TBD.SistemaVoluntarios.Controller;
+package com.TBD.SistemaVoluntarios.Controllers;
 
-import com.TBD.SistemaVoluntarios.Entity.Producto;
-import com.TBD.SistemaVoluntarios.Repository.ProductoRepository;
+import com.TBD.SistemaVoluntarios.Entities.Producto;
+import com.TBD.SistemaVoluntarios.Repositories.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
